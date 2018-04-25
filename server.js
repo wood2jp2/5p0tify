@@ -8,16 +8,33 @@ const express = require('express'),
     port = process.env.PORT || 5000;
 
 app.get('/api/hey', (req, res) => {
-  
-  spotify
-  .search({ type: 'track', query: 'All the Small Things' })
-  .then(function(response) {
-    console.log(response);
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-  res.send({ express: 'Hello From asdfsa' });
+
+  spotify.request('https://api.spotify.com/v1/users/1276640268/playlists/2kpoUUJ5a4Cw3feTkFJhZ2')
+      .then( data => {
+        let artistId = data.tracks.items[32].track.album.artists[0].id
+          spotify.request(`https://api.spotify.com/v1/artists/${artistId}`)
+            .then( res => {
+            console.log(res.genres[0])
+              })
+            .catch(error => {
+            console.log('ERROR: ' + error)
+              })
+
+      })
+      .catch(err => {
+        console.log('ERROR: ' + err)
+      })
+
+  // spotify.request('https://api.spotify.com/v1/artists/7n2wHs1TKAczGzO7Dd2rGr')
+  //     .then( data => {
+  //       console.log(data)
+  //     })
+  //     .catch(err => {
+  //       console.log('ERROR: ' + err)
+  //     })
+   
+
+  res.send({ express: 'Hello From kokoko' });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
