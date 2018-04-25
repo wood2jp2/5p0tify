@@ -10,7 +10,8 @@ class App extends Component {
     hiphop: 0,
     pop: 0,
     rock: 0,
-    other: 0
+    other: 0,
+    showChart: false
   };
 
   componentDidMount() {
@@ -34,30 +35,38 @@ class App extends Component {
       if (!genre) {
         console.log('null value')
       } else if (genre.includes('hip hop') || genre.includes('rap')) {
-        this.setState( prevState => this.state.hiphop++)
+        this.setState( prevState => prevState.hiphop++)
       } else if (genre.includes('pop')) {
-        this.setState( prevState => this.state.pop++)
+        this.setState( prevState => prevState.pop++)
       } else if (genre.includes('rock')) {
-        this.setState( prevState => this.state.rock++)
+        this.setState( prevState => prevState.rock++)
       } else {
-        this.setState( prevState => this.state.other++)
+        this.setState( prevState => prevState.other++)
       }
     })
-    console.log(this.state)
+    this.setState(() => ({
+      showChart: true
+    }))
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to 5p0tify</h1>
+          <h1 className="App-title">Welcome to Genre-fy</h1>
         </header>
         <p className="App-intro">
           {this.state.response}
         </p>
         <button 
         onClick={e => this.getState(e)}>Calculate Genres </button>
-        <DoughnutChart />
+        {this.state.showChart && 
+        <DoughnutChart data={{
+          pop: this.state.pop,
+          rock: this.state.rock,
+          other: this.state.other,
+          hiphop: this.state.hiphop
+        }}/> }
       </div>
     );
   }
