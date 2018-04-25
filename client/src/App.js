@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import DoughnutChart from './Components/DoughnutChart'
 
 class App extends Component {
 
   state = {
-    response: []
+    response: [],
+    hiphop: 0,
+    pop: 0,
+    rock: 0,
+    other: 0
   };
 
   componentDidMount() {
@@ -23,6 +28,24 @@ class App extends Component {
     return body;
   };
 
+  getState(e) {
+    e.preventDefault()
+    this.state.response.forEach( genre => {
+      if (!genre) {
+        console.log('null value')
+      } else if (genre.includes('hip hop') || genre.includes('rap')) {
+        this.setState( prevState => this.state.hiphop++)
+      } else if (genre.includes('pop')) {
+        this.setState( prevState => this.state.pop++)
+      } else if (genre.includes('rock')) {
+        this.setState( prevState => this.state.rock++)
+      } else {
+        this.setState( prevState => this.state.other++)
+      }
+    })
+    console.log(this.state)
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,6 +55,9 @@ class App extends Component {
         <p className="App-intro">
           {this.state.response}
         </p>
+        <button 
+        onClick={e => this.getState(e)}>Calculate Genres </button>
+        <DoughnutChart />
       </div>
     );
   }

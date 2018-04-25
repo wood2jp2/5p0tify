@@ -5,11 +5,9 @@ const express = require('express'),
       id: '96bc7054fa6f4fcfb7fcc1d4641e94b0',
       secret: '8d71e97def8e410499e5cc102f192351'
     }),
-    hey = {
-      something: 'fdsasdf',
-      finalGenres: []
-    },
-    port = process.env.PORT || 5000;
+    finalGenres = [],
+    port = process.env.PORT || 5000,
+    weatherAPIkey = '&APPID=74966a65057c6c87d4cf651a97e75b3d';
 
 app.get('/api/hey', (req, res) => {
   
@@ -24,20 +22,19 @@ app.get('/api/hey', (req, res) => {
 
             spotify.request(`https://api.spotify.com/v1/artists/${artistIdArray[i]}`)
             .then( resp => {
-              hey.finalGenres.push(resp.genres[0])
-              
+              finalGenres.push(resp.genres[0])
+
             })
             .catch(error => {
                 console.log('ERROR: ' + error)
             })
 
-           
         }
       })
       .catch(err => {
         console.log('ERROR: ' + err)
       })
-      .then(res.send({ express: hey.finalGenres }))
+      .then(res.send({ express: finalGenres }))
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
