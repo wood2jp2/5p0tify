@@ -32,7 +32,7 @@ export default class DoughnutChart extends Component {
             options: {
                 title: {
                     display: true,
-                    text: `Genres of ${this.props.year || 2018} Top 100`,
+                    text: `Genres of ${this.props.year || 2018}: Top Songs`,
                     position: 'top',
                 }
             }
