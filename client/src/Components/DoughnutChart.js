@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
 import {Doughnut} from 'react-chartjs-2'
-import styled from 'styled-components'
 import {GraphWrapper} from './Styles'
-
-
 
 export default class DoughnutChart extends Component {
     constructor(props) {

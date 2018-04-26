@@ -2,6 +2,21 @@ import styled from 'styled-components'
 
 const midnightBlue = '#2E45BA'
 
+const HeaderWrapper = styled.section`
+    background-color: ${midnightBlue};
+    margin-bottom: 2%;
+    color: white;
+    text-outline: 20px black;
+    border-bottom: 4px solid black;
+
+    .App-title, .App-subtitle {
+        -webkit-text-stroke: 1px black;
+    }
+    > div {
+        margin: 0
+    }
+`
+
 const CalculateButton = styled.button`
     background-color: ${midnightBlue};
     color: white;
@@ -13,7 +28,8 @@ const CalculateButton = styled.button`
     :hover {
         background-color: black;
         height: 50px;
-        width: 260px
+        width: 260px;
+        border: solid 6px midnightBlue;
     }
 `
 
@@ -23,4 +39,4 @@ const GraphWrapper = styled.div`
     padding-bottom: 20px
 `
 
-export {midnightBlue, CalculateButton, GraphWrapper}
+export {midnightBlue, CalculateButton, GraphWrapper, HeaderWrapper}

@@ -22,3 +22,4 @@ FUTURE FIXES AND ADDITIONS:
     1. Fix the API rate limit hits for a more efficient scraping process...
     2. Delve deeper into styled-components to enrich the aesthetics of the application.
     3. Simplification of code on the server side. There WERE mild differences between the playlist scraping     process at each endpoint, but I could absolutely write a simpler function taking arguments that          consolidates that code.
+    4. Deploy my application to a Heroku.
