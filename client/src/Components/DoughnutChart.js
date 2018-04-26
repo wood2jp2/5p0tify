@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import {Doughnut} from 'react-chartjs-2'
+import styled from 'styled-components'
+import {GraphWrapper} from './Styles'
+
+
 
 export default class DoughnutChart extends Component {
     constructor(props) {
@@ -38,11 +42,13 @@ export default class DoughnutChart extends Component {
         }
         
         return (
+            <GraphWrapper>
              <Doughnut 
                 data={data}
                 label='Genres of the Top 100'
                 options={data.options}
             />
+            </GraphWrapper>
         )
     }
 

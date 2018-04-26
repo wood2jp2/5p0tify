@@ -8,8 +8,7 @@ const express = require('express'),
     finalGenres = [],
     finalGenres2 = [],
     finalGenres3 = [],
-    port = process.env.PORT || 5000,
-    weatherAPIkey = '&APPID=74966a65057c6c87d4cf651a97e75b3d';
+    port = process.env.PORT || 5000;
 
 app.get('/api/2018', (req, res) => {
   

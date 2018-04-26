@@ -13,8 +13,14 @@ const CalculateButton = styled.button`
     :hover {
         background-color: black;
         height: 50px;
-        width: 180px
+        width: 260px
     }
 `
 
-export {midnightBlue, CalculateButton}
+const GraphWrapper = styled.div`
+    border-bottom: 3px dashed midnightBlue;
+    margin-bottom: 20px;
+    padding-bottom: 20px
+`
+
+export {midnightBlue, CalculateButton, GraphWrapper}
