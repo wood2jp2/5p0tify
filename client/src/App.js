@@ -1,27 +1,25 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import styled from 'styled-components'
 
 import './App.css'
 
 import GatherData from './Components/GatherData'
 import ErrorComponent from './Components/ErrorComponent'
+import Header from './Components/Header'
 
-const App = () => {
-    return (
-        <BrowserRouter>
-            <div className='App'>
-            <header className="App-header">
-            <h1 className="App-title">Welcome to Genre-fy</h1>
-            <h3>Contrast the genres of the US's top 100 songs!</h3>
-            </header>
+const App = () => (
+      <BrowserRouter>
+        <div className='App'>
+        <Header />
+        
             <Switch>
-            <Route exact path='/' component={GatherData} />
-            <Route component={ErrorComponent} />
+                <Route exact path='/' component={GatherData} />
+                <Route component={ErrorComponent} />
             </Switch>
-
+            
         </div>
       </BrowserRouter>
-    )
-}
+)
 
 export default App

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Doughnut} from 'react-chartjs-2'
 
-class DoughnutChart extends Component {
+export default class DoughnutChart extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,22 +22,28 @@ class DoughnutChart extends Component {
                 label: 'Top 100 Genre Count',
                 data: [this.props.data.pop, this.props.data.hiphop, this.props.data.rock, this.props.data.other],
                 backgroundColor: ['#A485EC', '#41ACFF', '#FF7D41', '#DFFF41'],
-                borderColor: 'black'
+                borderColor: 'black',
+                height: '100px'
             }],
             animation: {
                 animateScale: true
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Genres of 2018 Top 100',
+                    position: 'top',
+                }
             }
-        
         }
         
         return (
              <Doughnut 
                 data={data}
                 label='Genres of the Top 100'
+                options={data.options}
             />
         )
     }
 
 }
-
-export default DoughnutChart
