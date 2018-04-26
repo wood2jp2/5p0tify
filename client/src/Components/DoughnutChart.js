@@ -16,15 +16,18 @@ class DoughnutChart extends Component {
 
     render() {
 
-        console.log(this.props.data.pop)
-
         const data = {
             labels: ['Pop', 'Hip Hop', 'Rock', 'Other'],
             datasets: [{
                 label: 'Top 100 Genre Count',
-                // data: [25, 10, 15, 20],
                 data: [this.props.data.pop, this.props.data.hiphop, this.props.data.rock, this.props.data.other],
-            }]
+                backgroundColor: ['#A485EC', '#41ACFF', '#FF7D41', '#DFFF41'],
+                borderColor: 'black'
+            }],
+            animation: {
+                animateScale: true
+            }
+        
         }
         
         return (
