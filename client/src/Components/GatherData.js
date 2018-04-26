@@ -23,6 +23,7 @@ class GatherData extends Component {
   }
 
   componentDidMount() {
+    // console.log(this.props.year) correct year
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err))
@@ -36,17 +37,16 @@ class GatherData extends Component {
 
     if (response.status !== 200) throw Error(body.message);
 
-    // this.setState(() => ({[year]: true}), ()=> {
-    //   console.log(this.state)
-    // })
-
     return body;
-
 
   };
 
   calculateGenres(e) {
+
     e.preventDefault()
+
+    const year = this.props.year ? this.props.year : 2018
+
     this.state.response.forEach( genre => {
 
       !genre ? console.log('null value') : 
@@ -60,18 +60,22 @@ class GatherData extends Component {
 
     })
     this.setState(() => ({
-      showChart: true
+      showChart: true,
+      [year]: true
     }))
+
   }
 
   render() {
+
+    console.log(this.props.year)
     return (
       <div>
       {!this.state.showChart && <CalculateButton
         onClick={e => this.calculateGenres(e)}>
           Calculate Genres of {this.props.year || 2018}
         </CalculateButton> }
-        {this.state.showChart && <DoughnutChart data={{...this.state.genres}}/> }
+        {this.state.showChart && <DoughnutChart year={this.props.year || 2018} data={{...this.state.genres}}/> }
         {this.state[2018] && <GatherData year={2008}/> }
         {this.state[2008] && <GatherData year={1998}/> }
       </div>

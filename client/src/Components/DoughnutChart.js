@@ -10,7 +10,7 @@ export default class DoughnutChart extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        console.log(this.props.year)
         this.setState( () => ({active: true}))
     }
 
@@ -31,7 +31,7 @@ export default class DoughnutChart extends Component {
             options: {
                 title: {
                     display: true,
-                    text: 'Genres of 2018 Top 100',
+                    text: `Genres of ${this.props.year || 2018} Top 100`,
                     position: 'top',
                 }
             }
