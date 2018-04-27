@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import DoughnutChart from './DoughnutChart'
-import styled from 'styled-components'
 import {CalculateButton} from './Styles.js'
 
-class GatherData extends Component {
+export default class GatherData extends Component {
 
   constructor(props) {
     super(props)
@@ -23,7 +22,7 @@ class GatherData extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.year) correct year
+    
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err))
@@ -42,7 +41,6 @@ class GatherData extends Component {
   };
 
   calculateGenres(e) {
-
     e.preventDefault()
 
     const year = this.props.year ? this.props.year : 2018
@@ -59,6 +57,7 @@ class GatherData extends Component {
         this.setState( prevState => prevState.genres.other++)
 
     })
+
     this.setState(() => ({
       showChart: true,
       [year]: true
@@ -68,7 +67,6 @@ class GatherData extends Component {
 
   render() {
 
-    console.log(this.props.year)
     return (
       <div>
       {!this.state.showChart && <CalculateButton
@@ -82,5 +80,3 @@ class GatherData extends Component {
     );
   }
 }
-
-export default GatherData;
